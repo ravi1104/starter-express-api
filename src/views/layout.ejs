@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <ul>
+                <li><a href="http://localhost:3000/">Home</a></li>
+                <% if(typeof showlogout == 'undefined' || !showlogout){ %>
+                    <li><a href="/login">Login</a></li>
+                    <% }else {%>
+                        <li> <a href="/user/logout">Logout</a></li>
+                        <%}%>
+            </ul>
+        </div>
+    </nav>
+    <%-body%>
+        <footer>
+
+        </footer>
+</body>
+
+</html>

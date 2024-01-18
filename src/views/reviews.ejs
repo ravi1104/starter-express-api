@@ -1,0 +1,22 @@
+<p class="heading">Reviews</p>
+
+<div class="d-flex dir-col">
+    <% if (typeof reviews !=='undefined' && reviews.length> 0) { %>
+        <% reviews.forEach((rev)=> { %>
+            <div><span class="left-equals">Reviewer ID: </span> 
+                <span class="right-equals"> <%= rev.reviewerId %></span></div>
+            <div>
+                <span class="left-equals">Performance Details:</span>
+            <span class="right-equals"><%= rev.performanceDetails %></span>
+            </div>
+
+            <form action="/admin/list/review/<%=employeeId%>/<%=rev.reviewerId%>">
+                <input class="input-type-1" type="text" name="data">
+                <button class="button" type="submit">update</button>
+            </form>
+
+            <% }) %>
+                <% } else { %>
+                    <p>No reviews available</p>
+                    <% } %>
+</div>

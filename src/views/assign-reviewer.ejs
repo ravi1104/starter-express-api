@@ -1,0 +1,24 @@
+<div class="d-flex">
+    <% if (employees ) { %>
+        <% employees.forEach((emp)=> { %>
+            <div class="tile d-flex dir-col">
+                <div>
+                    <span class="left-equals">Username:</span>
+                    <span class="right-equals">
+                        <%= emp.username %>
+                    </span>
+                </div>
+                <div>
+                    <span class="left-equals">Department :</span>
+                    <span class="right-equals">
+                        <%= emp.department %>
+                    </span>
+                </div>
+                <a class="button" href="/admin/assign/reviewer/<%=employeeId%>?reviewerId=<%=emp._id %>">Assign</a>
+            </div>
+            <% }) %>
+                <% } %>
+                    <%if(assigned) {%>
+                        <p class="sub-heading">Success</p>
+                        <%}%>
+</div>

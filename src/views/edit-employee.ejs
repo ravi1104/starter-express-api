@@ -1,0 +1,20 @@
+<div class="d-flex dir-col">
+    <div class="d-flex dir-col tile">
+        <%if(employee){%>
+            <p>Username: <%=employee.username%>
+            </p>
+            <p>department: <%=employee.department%>
+            </p>
+            <%}%>
+                <a class="button-2" href="/admin/remove/<%=employee._id%>">Remove <%=employee.username%></a>
+                <form action="/admin/update/<%=employee._id%>">
+                    <label for="">Role: </label>
+                    <select class="input-type-1" name="role" id="">
+                        <option value="employee">Employee</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button class="button" type="submit">Update</button>
+                </form>
+
+    </div>
+</div>
