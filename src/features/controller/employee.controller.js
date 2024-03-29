@@ -17,7 +17,7 @@ export const loginUser = async (req, res) => {
     const { username, password } = req.body;
     const user = await loginUserRepo({ username });
     if (!user) {
-      return res.status(401).json({ message: 'Invalid username or password' });
+      return res.render('error',{ msg: 'Invalid username' });
     }
     const passwordMatches = await bcrypt.compare(password, user.password);
     if (passwordMatches) {
@@ -26,7 +26,7 @@ export const loginUser = async (req, res) => {
       return res.redirect('/');
     } else {
       // return res.status(401).json({ message: 'Invalid username or password' });
-      res.render('error',{msg: 'Invalid username or password'})
+      res.render('error',{msg: 'Invalid password'})
     }
   } catch (error) {
     res.render('error',{msg:error.message});

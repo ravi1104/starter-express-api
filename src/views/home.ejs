@@ -21,45 +21,52 @@
                                 </span>
                             </div>
                             <a class="button-2" href="/admin/edit-emp/<%=emp._id%>">Edit</a>
-                            <a  class="button" href="admin/list/review/<%=emp._id%>">Edit Reviews</a>
+                            <a class="button" href="admin/list/review/<%=emp._id%>">Edit Reviews</a>
                             <a class="button" href="/admin/assign/reviewer/<%=emp._id%>">Assign Reviewer</a>
                         </div>
                         <% }) %>
 
-                            <% } %>
+                <% } %>
 
             </div>
         </div>
         <% } else if (req.session.role==='employee' ) { %>
-            <div class="heading">pendingReview</div>
+            <div class="heading">Pending Reviews</div>
 
             <div class="d-flex">
-                <% if (pendingReview) { %>
-
+                <% if (pendingReview && pendingReview.length > 0) { %>
                     <div class="d-flex dir-col">
-                        <% pendingReview.forEach((rev)=>{ %>
+                        <% pendingReview.forEach((rev) => { %>
                             <div class="fs-1">
                                 <span class="left-equals">Employee :</span>
-                                <span class="right-equals"><%=rev.employeeId.username %></span>
+                                <span class="right-equals">
+                                    <%= rev.employeeId.username %>
+                                </span>
                             </div>
-                            <div class="">
+                            <div>
                                 <span class="left-equals">Department :</span>
-                                <span class="right-equals"><%=rev.employeeId.department %></span>
-                                
+                                <span class="right-equals">
+                                    <%= rev.employeeId.department %>
+                                </span>
                             </div>
                             <div class="fs-2">
                                 <span class="left-equals">FeedBack :</span>
-                                <span class="right-equals"><%=rev.performanceDetails %></span>
+                                <span class="right-equals">
+                                    <%= rev.performanceDetails %>
+                                </span>
                             </div>
                             <form action="/user/submitfeedback" method="post">
-                                <input type="text" name="reviewId" value="<%=rev._id %>" hidden>
+                                <input type="text" name="reviewId" value="<%= rev._id %>" hidden>
                                 <label class="left-equals" for="">New FeedBack :</label>
                                 <input class="input-type-1" name="feedback" type="text">
                                 <button class="button" type="submit">Submit</button>
                             </form>
-                            <%})%>
+                        <% }) %>
                     </div>
-                    <% } %>
+                <% } else { %>
+                    <div>User Has No Pending Reviews</div>
+                <% } %>
+                
             </div>
 
 
